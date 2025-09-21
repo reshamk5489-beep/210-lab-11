@@ -37,12 +37,16 @@ int main()
     Department *departments = new Department[MAX_DEPARTMENTS];
 
     // Comment #7: Input details for each department.
+    cout << "\t\tEnter details for " << MAX_DEPARTMENTS << " departments, each with " 
+        << MAX_EMPLOYEES << " employees" << endl << endl;
+
     for (int i = 0; i < MAX_DEPARTMENTS; ++i)
     {
        inputDepartment(&departments[i]);
     }
 
     // Comment #8: Output details for each department.
+    cout << endl << "\t\tDepartment Details" << endl;
     for (int i = 0; i < MAX_DEPARTMENTS; ++i)
     {
        outputDepartment(&departments[i]);
@@ -57,16 +61,18 @@ void inputDepartment(Department *deptPtr)
     cout << "Enter department name: ";
     cin >> deptPtr->name;
 
-    cout << "Enter the department ID#:";
+    cout << "Enter the department ID#: ";
     cin >> deptPtr->id;
 
     deptPtr->employeeIds = new int[MAX_EMPLOYEES];
 
     for(int i = 0; i < MAX_EMPLOYEES; ++i)
     {
-        cout << "Enter employee ID# " << (i + 1) << ": ";
+        cout << "Enter employee ID#: " << (i + 1) << ": ";
         cin >> deptPtr->employeeIds[i];
     }
+
+    cout << endl;
 }
 
 void outputDepartment(Department *deptPtr)
@@ -79,4 +85,6 @@ void outputDepartment(Department *deptPtr)
     {
         cout << "Employee ID# " << (i + 1) << ": " << deptPtr->employeeIds[i] << " " << endl;
     }
+
+    cout << endl;
 }
