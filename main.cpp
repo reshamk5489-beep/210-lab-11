@@ -27,33 +27,56 @@ struct Department
     }
 };
 
+// Comment #5: Function prototypes for input and output operations.
 void inputDepartment(Department *deptPtr);
+void outputDepartment(Department *deptPtr);
 
 int main()
 {
-    // Comment #5: Dynamically allocate an array of Department structures.
+    // Comment #6: Dynamically allocate an array of Department structures.
     Department *departments = new Department[MAX_DEPARTMENTS];
 
-    // Comment #6: Input details for each department.
+    // Comment #7: Input details for each department.
     for (int i = 0; i < MAX_DEPARTMENTS; ++i)
     {
        inputDepartment(&departments[i]);
     }
+
+    // Comment #8: Output details for each department.
+    for (int i = 0; i < MAX_DEPARTMENTS; ++i)
+    {
+       outputDepartment(&departments[i]);
+    }
+
+    return 0;
 }
 
 void inputDepartment(Department *deptPtr)
 {
+    // Comment #9: Input department name, ID, and employee IDs.
     cout << "Enter department name: ";
     cin >> deptPtr->name;
 
-    cout << "Enter the department ID:";
+    cout << "Enter the department ID#:";
     cin >> deptPtr->id;
 
     deptPtr->employeeIds = new int[MAX_EMPLOYEES];
 
     for(int i = 0; i < MAX_EMPLOYEES; ++i)
     {
-        cout << "Enter employee ID " << (i + 1) << ": ";
+        cout << "Enter employee ID# " << (i + 1) << ": ";
         cin >> deptPtr->employeeIds[i];
+    }
+}
+
+void outputDepartment(Department *deptPtr)
+{
+    cout << "Department Name: " << deptPtr->name << endl;
+    cout << "Department ID#: " << deptPtr->id << endl;
+
+    // Comment #10: Output each employee ID in the department.
+    for(int i = 0; i < MAX_EMPLOYEES; ++i)
+    {
+        cout << "Employee ID# " << (i + 1) << ": " << deptPtr->employeeIds[i] << " " << endl;
     }
 }
